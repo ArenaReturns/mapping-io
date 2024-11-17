@@ -29,7 +29,7 @@ import net.fabricmc.mappingio.MappingFlag;
 import net.fabricmc.mappingio.MappingWriter;
 
 abstract class EnigmaWriterBase implements MappingWriter {
-	EnigmaWriterBase(Writer writer) throws IOException {
+	EnigmaWriterBase(Writer writer) {
 		this.writer = writer;
 	}
 
@@ -185,10 +185,8 @@ abstract class EnigmaWriterBase implements MappingWriter {
 						if (dstEnd < 0) dstEnd = dstName.length();
 						int dstLen = dstEnd - dstStart;
 
-						if (dstLen != srcLen || !srcClassName.regionMatches(srcStart, dstName, dstStart, srcLen)) { // src != dst
-							writer.write(' ');
-							writer.write(dstName, dstStart, dstLen);
-						}
+						writer.write(' ');
+						writer.write(dstName, dstStart, dstLen);
 					}
 				}
 
